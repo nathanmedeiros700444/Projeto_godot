@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcfyo0npcqdcq"]
+
+[ext_resource type="Texture2D" uid="uid://cygv6va07a827" path="res://assets/player_idle-01.png" id="1_sy6st"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_twgth"]
+[ext_resource type="Texture2D" uid="uid://pprymfll6xm8" path="res://assets/player_idle-02.png" id="2_7h7jv"]
+[ext_resource type="Texture2D" uid="uid://2hytw5mf332" path="res://assets/player_idle-03.png" id="3_p3bvj"]
+[ext_resource type="Texture2D" uid="uid://ders0i18yuvii" path="res://assets/player_move-01.png" id="4_xoi6s"]
+[ext_resource type="Texture2D" uid="uid://ddhvkm02crdyg" path="res://assets/player_move-02.png" id="5_5h2w7"]
+[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://assets/player_down-01.png" id="6_a78ea"]
+[ext_resource type="Texture2D" uid="uid://h272s26e08hc" path="res://assets/player_down-02.png" id="7_7wyhs"]
+[ext_resource type="Texture2D" uid="uid://bv22jkmqp6855" path="res://assets/player_up-01.png" id="8_fncuu"]
+[ext_resource type="Texture2D" uid="uid://dil2qiwuadvwv" path="res://assets/player_up-02.png" id="9_g426s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbftl"]
+radius = 46.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0el4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sy6st")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7h7jv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p3bvj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xoi6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5h2w7")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a78ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7wyhs")
+}],
+"loop": true,
+"name": &"move down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fncuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g426s")
+}],
+"loop": true,
+"name": &"move up",
+"speed": 5.0
+}]
+
+[node name="player" type="Area2D"]
+position = Vector2(230, 354)
+script = ExtResource("1_twgth")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 1)
+shape = SubResource("CircleShape2D_pbftl")
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, -10)
+sprite_frames = SubResource("SpriteFrames_0el4q")
+animation = &"move up"
+autoplay = "idle"
+frame_progress = 0.469284
